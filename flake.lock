@@ -91,11 +91,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1716330097,
-        "narHash": "sha256-8BO3B7e3BiyIDsaKA0tY8O88rClYRTjvAp66y+VBUeU=",
+        "lastModified": 1716769173,
+        "narHash": "sha256-7EXDb5WBw+d004Agt+JHC/Oyh/KTUglOaQ4MNjBbo5w=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5710852ba686cc1fd0d3b8e22b3117d43ba374c2",
+        "rev": "9ca3f649614213b2aaf5f1e16ec06952fe4c2632",
         "type": "github"
       },
       "original": {
@@ -105,11 +105,46 @@
         "type": "github"
       }
     },
+    "nx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681389870,
+        "narHash": "sha256-r+D6537a3pTBH6OmoWW6+q3uhrZJT928qh1XDCLkE6U=",
+        "owner": "tenxsoydev",
+        "repo": "nx.nvim",
+        "rev": "3ef35bcd8923f91b97b06a4d122b27744522e0f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tenxsoydev",
+        "repo": "nx.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "nx": "nx",
+        "smart-open": "smart-open",
+        "wf-nvim": "wf-nvim"
+      }
+    },
+    "smart-open": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713921977,
+        "narHash": "sha256-mhOvWaRzPvGTFIMVAYg8Zd8YqpSs1xMMAaWTeh90Ee0=",
+        "owner": "danielfalk",
+        "repo": "smart-open.nvim",
+        "rev": "028bb71d20e8212da3514bf6dabfb17038d81ee4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "danielfalk",
+        "repo": "smart-open.nvim",
+        "type": "github"
       }
     },
     "systems": {
@@ -124,6 +159,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wf-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710049294,
+        "narHash": "sha256-4RwTZP3Oz0Rj/PB9NV+FsdOsLMZZQMW+y25A7MWt9qo=",
+        "owner": "Cassin01",
+        "repo": "wf.nvim",
+        "rev": "716f2151bef7b38426a99802e89566ac9211978a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Cassin01",
+        "repo": "wf.nvim",
         "type": "github"
       }
     }

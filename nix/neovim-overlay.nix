@@ -5,7 +5,7 @@ with final.pkgs.lib; let
 
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
-    pkgs.vimUtils.buildNeovimPlugin {
+    pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
     };
@@ -76,11 +76,18 @@ with final.pkgs.lib; let
     plenary-nvim
     nvim-web-devicons
     vim-repeat
+
+    conform-nvim # formatting
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
+    (mkNvimPlugin inputs.smart-open "smart_open")
+    (mkNvimPlugin inputs.nx "nx")
+
     # ^ bleeding-edge plugins from flake inputs
-    which-key-nvim
+    # which-key-nvim
+
+    gbprod-nord
   ];
 
   extraPackages = with pkgs; [

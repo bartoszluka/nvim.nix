@@ -8,10 +8,18 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    # wf-nvim = {
-    #   url = "github:Cassin01/wf.nvim";
-    #   flake = false;
-    # };
+    wf-nvim = {
+      url = "github:Cassin01/wf.nvim";
+      flake = false;
+    };
+    smart-open = {
+      url = "github:danielfalk/smart-open.nvim";
+      flake = false;
+    };
+    nx = {
+      url = "github:tenxsoydev/nx.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -55,6 +63,7 @@
         shellHook = ''
           # symlink the .luarc.json generated in the overlay
           ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+          fish
         '';
       };
     in {
