@@ -63,9 +63,9 @@ nx.map({
 
 nx.map({
     { "<leader>q", "<cmd>confirm quit<CR>", desc = "Quit" },
-    { "<leader>u", "g~l",                   desc = "Swap case" },
-    { "<leader>w", "<cmd>write<CR>",        desc = "Write file", silent = true },
-    { "<leader>W", "<cmd>write<CR>",        desc = "Write file" },
+    { "<leader>u", "g~l", desc = "Swap case" },
+    { "<leader>w", "<cmd>write<CR>", desc = "Write file", silent = true },
+    { "<leader>W", "<cmd>write<CR>", desc = "Write file" },
 })
 
 local modes = { "n", "v", "t" }
@@ -77,6 +77,6 @@ nx.map({
 })
 
 nx.map({
-    { ";",     ":",       { "n", "v" }, silent = false }, -- map ';' to start command mode
-    { "<C-l>", "<Right>", { "c" },      silent = false },
+    { ";", ":", { "n", "v" }, silent = false }, -- map ';' to start command mode
+    { "<C-l>", "<Right>", { "c" }, silent = false },
 })

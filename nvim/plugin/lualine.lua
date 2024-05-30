@@ -3,8 +3,8 @@ if vim.g.did_load_lualine_plugin then
 end
 vim.g.did_load_lualine_plugin = true
 
-local navic = require("nvim-navic")
-navic.setup({})
+-- local navic = require("nvim-navic")
+-- navic.setup({})
 
 ---Indicators for special modes,
 ---@return string status
@@ -32,7 +32,14 @@ require("lualine").setup({
     sections = {
         lualine_c = {
             -- nvim-navic
-            { navic.get_location, cond = navic.is_available },
+            -- { navic.get_location, cond = navic.is_available },
+
+            {
+                "filename",
+                path = 1,
+                file_status = true,
+                newfile_status = true,
+            },
         },
         lualine_z = {
             -- (see above)
@@ -40,7 +47,7 @@ require("lualine").setup({
         },
     },
     options = {
-        theme = "auto",
+        theme = "nord",
     },
     -- Example top tabline configuration (this may clash with other plugins)
     -- tabline = {
