@@ -1,146 +1,194 @@
-if vim.g.did_load_autocommands_plugin then
-    return
-end
-vim.g.did_load_autocommands_plugin = true
-
-local api = vim.api
-
-local tempdirgroup = api.nvim_create_augroup("tempdir", { clear = true })
--- Do not set undofile for files in /tmp
-api.nvim_create_autocmd("BufWritePre", {
-    pattern = "/tmp/*",
-    group = tempdirgroup,
-    callback = function()
-        vim.cmd.setlocal("noundofile")
-    end,
+vim.filetype.add({
+    filename = {
+        ["flake.lock"] = "json",
+        [".swcrc"] = "json",
+    },
+    extension = {
+        ll = "llvm",
+    },
+    pattern = {
+        ["*.[cf]sproj"] = "xml",
+    },
 })
 
--- -- Disable spell checking in terminal buffers
--- local nospell_group = api.nvim_create_augroup('nospell', { clear = true })
--- api.nvim_create_autocmd('TermOpen', {
---   group = nospell_group,
---   callback = function()
---     vim.wo[0].spell = false
---   end,
--- })
+nx.au({
+    "FileType",
+    desc = "fix commentstring for c-like languages",
+    pattern = { "c", "cpp", "cs", "java", "fsharp" },
+    command = "setlocal commentstring=//%s",
+}, { create_group = "FixCommentString" })
 
--- LSP
-local keymap = vim.keymap
+nx.au({
+    "FileType",
+    desc = "fix commentstring for markdown",
+    pattern = "markdown",
+    command = [[setlocal commentstring=<!--\ %s\ -->]],
+}, { create_group = "FixMarkdownCommentString" })
 
-local function preview_location_callback(_, result)
-    if result == nil or vim.tbl_isempty(result) then
-        return nil
-    end
-    local buf, _ = vim.lsp.util.preview_location(result[1])
-    if buf then
-        local cur_buf = vim.api.nvim_get_current_buf()
-        vim.bo[buf].filetype = vim.bo[cur_buf].filetype
-    end
-end
-
-local function peek_definition()
-    local params = vim.lsp.util.make_position_params()
-    return vim.lsp.buf_request(0, "textDocument/definition", params, preview_location_callback)
-end
-
-local function peek_type_definition()
-    local params = vim.lsp.util.make_position_params()
-    return vim.lsp.buf_request(0, "textDocument/typeDefinition", params, preview_location_callback)
-end
-
---- Don't create a comment string when hitting <Enter> on a comment line
-vim.api.nvim_create_autocmd("BufEnter", {
-    group = vim.api.nvim_create_augroup("DisableNewLineAutoCommentString", {}),
-    callback = function()
-        vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
-    end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-    callback = function(ev)
-        local bufnr = ev.buf
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-        -- Attach plugins
-        require("nvim-navic").attach(client, bufnr)
-
-        vim.cmd.setlocal("signcolumn=yes")
-        vim.bo[bufnr].bufhidden = "hide"
-
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-        local function desc(description)
-            return { noremap = true, silent = true, buffer = bufnr, desc = description }
-        end
-        keymap.set("n", "gD", vim.lsp.buf.declaration, desc("lsp [g]o to [D]eclaration"))
-        keymap.set("n", "gd", vim.lsp.buf.definition, desc("lsp [g]o to [d]efinition"))
-        keymap.set("n", "<space>gt", vim.lsp.buf.type_definition, desc("lsp [g]o to [t]ype definition"))
-        -- keymap.set('n', 'K', vim.lsp.buf.hover, desc('[lsp] hover'))
-        keymap.set("n", "<space>pd", peek_definition, desc("lsp [p]eek [d]efinition"))
-        keymap.set("n", "<space>pt", peek_type_definition, desc("lsp [p]eek [t]ype definition"))
-        keymap.set("n", "gi", vim.lsp.buf.implementation, desc("lsp [g]o to [i]mplementation"))
-        keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, desc("[lsp] signature help"))
-        keymap.set("n", "<space>r", vim.lsp.buf.rename, desc("lsp [r]e[n]ame"))
-        -- keymap.set('n', '<space>wq', vim.lsp.buf.workspace_symbol, desc('lsp [w]orkspace symbol [q]'))
-        -- keymap.set('n', '<space>dd', vim.lsp.buf.document_symbol, desc('lsp [dd]ocument symbol'))
-        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, desc("[lsp] code action"))
-        keymap.set("n", "<leader>cl", vim.lsp.codelens.run, desc("[lsp] run code lens"))
-        keymap.set("n", "<space>cr", vim.lsp.codelens.refresh, desc("lsp [c]ode lenses [r]efresh"))
-        keymap.set("n", "gr", vim.lsp.buf.references, desc("lsp [g]et [r]eferences"))
-        if client.server_capabilities.inlayHintProvider then
-            keymap.set("n", "<space>h", function()
-                local current_setting = vim.lsp.inlay_hint.is_enabled(bufnr)
-                vim.lsp.inlay_hint.enable(bufnr, not current_setting)
-            end, desc("[lsp] toggle inlay hints"))
-        end
-
-        -- Auto-refresh code lenses
-        if not client then
-            return
-        end
-        local function buf_refresh_codeLens()
-            vim.schedule(function()
-                if client.server_capabilities.codeLensProvider then
-                    vim.lsp.codelens.refresh()
-                    return
-                end
-            end)
-        end
-        -- local group = api.nvim_create_augroup(string.format('lsp-%s-%s', bufnr, client.id), {})
-        -- if client.server_capabilities.codeLensProvider then
-        --   vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePost', 'TextChanged' }, {
-        --     group = group,
-        --     callback = buf_refresh_codeLens,
-        --     buffer = bufnr,
-        --   })
-        --   buf_refresh_codeLens()
-        -- end
-    end,
-})
-
--- More examples, disabled by default
-
--- Toggle between relative/absolute line numbers
--- Show relative line numbers in the current buffer,
--- absolute line numbers in inactive buffers
-local numbertoggle = api.nvim_create_augroup("numbertoggle", { clear = true })
--- api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
---   pattern = '*',
---   group = numbertoggle,
---   callback = function()
---     if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
---       vim.opt.relativenumber = true
---     end
---   end,
--- })
-api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter", "WinLeave" }, {
+nx.au({
+    { "BufRead", "BufNewFile" },
+    desc = "disable extending comments with 'o'",
     pattern = "*",
-    group = numbertoggle,
     callback = function()
-        if vim.o.nu then
-            vim.opt.relativenumber = false
-            vim.cmd.redraw()
+        vim.opt_local.formatoptions:remove("o")
+    end,
+}, { create_group = "DisableExtendingComments" })
+
+nx.au({
+    "BufEnter",
+    desc = "start in insert mode in git commit message buffer if the line is empty",
+    pattern = "*COMMIT_EDITMSG",
+    callback = function()
+        local line = vim.api.nvim_buf_get_lines(0, 0, 1, false)
+        if line ~= nil and #line[1] == 0 then
+            vim.cmd.startinsert()
         end
     end,
+}, { create_group = "GitCommitStartInsert" })
+
+nx.au({
+    { "BufRead", "BufNewFile" },
+    desc = "set correct filetype and commentstring for .rasi files",
+    pattern = "*.rasi",
+    callback = function()
+        nx.set({
+            filetype = "rasi",
+            commentstring = "// %s",
+        }, vim.bo)
+    end,
+}, { create_group = "Rasi" })
+
+nx.au({
+    "FileType",
+    pattern = "help",
+    callback = function(event)
+        nx.map({ "gd", "K", buffer = event.buf, silent = true })
+    end,
+}, { create_group = "GoToDefinitionInHelpFiles" })
+
+-- nx.au({
+--     { "BufRead", "BufNewFile" },
+--     desc = "set correct filetype F# files",
+--     pattern = { "*.fs", "*.fsx", "*.fsi" },
+--     command = "set filetype=fsharp",
+-- }, { create_group = "fsharp" })
+
+-- nx.au({
+--     "BufEnter",
+--     desc = "set correct filetype and commentstring for polybar conf files",
+--     pattern = "do",
+--     callback = function()
+--         nx.set({
+--             filetype = "dosini",
+--             commentstring = "# %s",
+--         }, vim.bo)
+--     end,
+-- }, { create_group = "GitCommit" })
+
+-- nx.au({
+--     "FileType",
+--     desc = "set filetype for llvm",
+--     pattern = "lifelines",
+--     command = "set filetype=llvm",
+-- }, { create_group = "LLVM" })
+
+-- Check if we need to reload the file when it changed
+nx.au({
+    { "FocusGained", "TermClose", "TermLeave" },
+    command = "checktime",
+}, { create_group = "CheckIfEditedOutside" })
+
+-- resize splits if window got resized
+nx.au({ "VimResized", command = "tabdo wincmd =" }, { create_group = "ResizeSplits" })
+
+-- close some filetypes with <q>
+nx.au({
+    "FileType",
+    pattern = {
+        "",
+        "PlenaryTestPopup",
+        "checkhealth",
+        "help",
+        "httpResult",
+        "lspinfo",
+        "man",
+        "neotest-output",
+        "neotest-output-panel",
+        "notify",
+        "qf",
+        "query",
+        "spectre_panel",
+        "startuptime",
+        "tsplayground",
+    },
+    callback = function(event)
+        vim.bo[event.buf].buflisted = false
+        nx.map({ "q", "<cmd>close!<cr>", buffer = event.buf, silent = true })
+    end,
+}, { create_group = "CloseWithQ" })
+
+-- close some filetypes with <q>
+nx.au({
+    "FileType",
+    pattern = { "gitcommit", "help", "starter" },
+    callback = function(event)
+        nx.map({ "q", "<cmd>quit<cr>", buffer = event.buf, silent = true })
+    end,
+}, { create_group = "QuitWithQ" })
+
+-- wrap and check for spell in text filetypes
+nx.au({
+    {
+        "FileType",
+        pattern = "gitcommit",
+        callback = function()
+            vim.opt_local.wrap = true
+            vim.opt_local.spell = true
+        end,
+    },
+}, { create_group = "GitCommitGroup" })
+
+nx.au({
+    {
+        "BufReadPost",
+        callback = function()
+            local mark = vim.api.nvim_buf_get_mark(0, '"')
+            local line_count = vim.api.nvim_buf_line_count(0)
+            if mark[1] > 0 and mark[1] <= line_count then
+                pcall(vim.api.nvim_win_set_cursor, 0, mark)
+            end
+            vim.cmd("normal! zz")
+        end,
+    },
 })
+
+nx.au({
+    "TextYankPost",
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({ timeout = 50 })
+    end,
+}, { create_group = "HighlightYank" })
+
+nx.au({
+    { "BufWinEnter", "BufReadPost" },
+    --  not sure these 2 are needed
+    -- "FileReadPost",
+    pattern = "*",
+    -- manually update folds and open all folds
+    callback = function()
+        vim.cmd("normal! zxzR")
+        vim.opt.foldlevel = 99
+    end,
+}, { create_group = "UpdateFolds" })
+
+nx.au({
+    "FileType",
+    pattern = "xml",
+    callback = function()
+        vim.opt_local.isfname:prepend("\\")
+        -- don't know how to do it in lua
+        vim.cmd("setlocal includeexpr=tr(v:fname,'\\\\','/')")
+        -- vim.opt_local.includeexpr:prepend(vim.fn.tr(vim.v.fname, [[\\\\]], "/"))
+    end,
+}, { create_group = "GFWithBackslashes" })
