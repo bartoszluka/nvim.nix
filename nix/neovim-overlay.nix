@@ -108,7 +108,7 @@ in {
     viAlias = true;
     vimAlias = true;
     withSqlite = true;
-    extraLuaPackages = p: [p.fzy];
+    extraLuaPackages = p: [p.fzy p.jsregexp];
     inherit extraPackages;
   };
 
