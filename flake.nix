@@ -20,6 +20,14 @@
       url = "github:tenxsoydev/nx.nvim";
       flake = false;
     };
+    snap = {
+      url = "github:camspiers/snap";
+      flake = false;
+    };
+    fzy-lua-native = {
+      url = "github:romgrk/fzy-lua-native";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

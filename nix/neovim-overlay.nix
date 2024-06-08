@@ -15,7 +15,7 @@ with final.pkgs.lib; let
   pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   # This is the helper function that builds the Neovim derivation.
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
+  mkNeovim = pkgs.callPackage ./mkNeovim.nix {inherit pkgs-wrapNeovim;};
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
@@ -80,26 +80,35 @@ with final.pkgs.lib; let
     conform-nvim # formatting
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
-    # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
+    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
+    (mkNvimPlugin inputs.snap "snap")
 
     # ^ bleeding-edge plugins from flake inputs
     # which-key-nvim
 
     gbprod-nord
+    oil-nvim
   ];
 
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
+    stylua
     nil # nix LSP
+    alejandra
+    clang-tools # for C
   ];
 in {
   # This is the neovim derivation
   # returned by the overlay
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
+    viAlias = true;
+    vimAlias = true;
+    withSqlite = true;
+    extraLuaPackages = p: [p.fzy];
     inherit extraPackages;
   };
 

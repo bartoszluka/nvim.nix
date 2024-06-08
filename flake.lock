@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "fzy-lua-native": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686234741,
+        "narHash": "sha256-Ja4xNGruETSU1nq+r+hkJiFpnMbmL9m2JIKC6gHFGf4=",
+        "owner": "romgrk",
+        "repo": "fzy-lua-native",
+        "rev": "820f745b7c442176bcc243e8f38ef4b985febfaf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "romgrk",
+        "repo": "fzy-lua-native",
+        "type": "github"
+      }
+    },
     "gen-luarc": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -124,10 +140,12 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "fzy-lua-native": "fzy-lua-native",
         "gen-luarc": "gen-luarc",
         "nixpkgs": "nixpkgs_2",
         "nx": "nx",
         "smart-open": "smart-open",
+        "snap": "snap",
         "wf-nvim": "wf-nvim"
       }
     },
@@ -144,6 +162,22 @@
       "original": {
         "owner": "danielfalk",
         "repo": "smart-open.nvim",
+        "type": "github"
+      }
+    },
+    "snap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717578488,
+        "narHash": "sha256-TRA2gSCXQNJ/AzS42XFI6MM/T5w0NiqJHhu0Jt1QDL4=",
+        "owner": "camspiers",
+        "repo": "snap",
+        "rev": "486a2ab714eee79c392abfb45bdb94398409ed34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "camspiers",
+        "repo": "snap",
         "type": "github"
       }
     },
