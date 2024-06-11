@@ -99,6 +99,9 @@ with final.pkgs.lib; let
     nil # nix LSP
     alejandra
     clang-tools # for C
+    typescript
+    nodePackages.typescript-language-server
+    prettierd
   ];
 in {
   # This is the neovim derivation
