@@ -90,6 +90,7 @@ with final.pkgs.lib; let
 
     gbprod-nord
     oil-nvim
+    vim-wakatime
   ];
 
   extraPackages = with pkgs; [
