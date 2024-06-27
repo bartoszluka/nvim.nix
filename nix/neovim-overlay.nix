@@ -41,9 +41,11 @@ with final.pkgs.lib; let
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
     cmp-cmdline # cmp command line suggestions
     cmp-cmdline-history # cmp command line history suggestions
+    cmp-fish
+    nvim-autopairs
     # ^ nvim-cmp extensions
     # git integration plugins
-    diffview-nvim # https://github.com/sindrets/diffview.nvim/
+    # diffview-nvim # https://github.com/sindrets/diffview.nvim/
     neogit # https://github.com/TimUntersberger/neogit/
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
@@ -54,22 +56,21 @@ with final.pkgs.lib; let
     # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
     # ^ telescope and extensions
     # UI
-    lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
-    nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
-    statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
-    nvim-treesitter-context # nvim-treesitter-context
+    # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
+    # nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
+    # statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     # ^ UI
     # language support
     # ^ language support
     # navigation/editing enhancement plugins
-    vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
+    # vim-unimpaired # predefined [ and ] navigation keymaps | https://github.com/tpope/vim-unimpaired/
     eyeliner-nvim # Highlights unique characters for f/F and t/T motions | https://github.com/jinh0/eyeliner.nvim
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
     nvim-ts-context-commentstring # https://github.com/joosepalviste/nvim-ts-context-commentstring/
-    # ^ navigation/editing enhancement plugins
+    nvim-treesitter-context
     # Useful utilities
-    nvim-unception # Prevent nested neovim sessions | nvim-unception
+    # nvim-unception # Prevent nested neovim sessions | nvim-unception
     # ^ Useful utilities
     # libraries that other plugins depend on
     sqlite-lua
@@ -80,17 +81,24 @@ with final.pkgs.lib; let
     conform-nvim # formatting
     # ^ libraries that other plugins depend on
     # bleeding-edge plugins from flake inputs
-    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
-    (mkNvimPlugin inputs.smart-open "smart_open")
-    (mkNvimPlugin inputs.nx "nx")
-    (mkNvimPlugin inputs.snap "snap")
-
     # ^ bleeding-edge plugins from flake inputs
     # which-key-nvim
 
     gbprod-nord
     oil-nvim
     vim-wakatime
+    nvim-colorizer-lua
+    no-neck-pain-nvim
+    fidget-nvim
+    nvim-lspconfig
+
+    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
+    (mkNvimPlugin inputs.smart-open "smart_open")
+    (mkNvimPlugin inputs.nx "nx")
+    (mkNvimPlugin inputs.snap "snap")
+    (mkNvimPlugin inputs.lz-n "lz.n")
+    (mkNvimPlugin inputs.csharp "csharp.nvim")
+    (mkNvimPlugin inputs.bufonly "BufOnly")
   ];
 
   extraPackages = with pkgs; [

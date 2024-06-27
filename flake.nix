@@ -8,6 +8,18 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
+    lz-n = {
+      url = "github:nvim-neorocks/lz.n";
+      flake = false;
+    };
+    csharp = {
+      url = "github:iabdelkareem/csharp.nvim";
+      flake = false;
+    };
+    bufonly = {
+      url = "github:numToStr/BufOnly.nvim";
+      flake = false;
+    };
     wf-nvim = {
       url = "github:Cassin01/wf.nvim";
       flake = false;

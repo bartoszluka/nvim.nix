@@ -23,19 +23,10 @@ nx.map({
 })
 
 -- Remap for dealing with word wrap
-nx.map({
-    { "k", "v:count == 0 ? 'gk' : 'k'", expr = true, silent = true },
-    { "j", "v:count == 0 ? 'gj' : 'j'", expr = true, silent = true },
-})
-
--- local function close_all_floating_windows()
---     for _, win in ipairs(vim.api.nvim_list_wins()) do
---         local config = vim.api.nvim_win_get_config(win)
---         if config.relative ~= "" then
---             vim.api.nvim_win_close(win, false)
---         end
---     end
--- end
+-- nx.map({
+--     { "k", "v:count == 0 ? 'gk' : 'k'", expr = true, silent = true },
+--     { "j", "v:count == 0 ? 'gj' : 'j'", expr = true, silent = true },
+-- })
 
 -- vim.on_key(function(char)
 --     if vim.fn.mode() == "n" then
@@ -62,21 +53,21 @@ nx.map({
 -- })
 
 nx.map({
-    { "<leader>q", "<cmd>confirm quit<CR>", desc = "Quit" },
-    { "<leader>u", "g~l", desc = "Swap case" },
-    { "<leader>w", "<cmd>write<CR>", desc = "Write file", silent = true },
-    { "<leader>W", "<cmd>write<CR>", desc = "Write file" },
+    { "<leader>q", "<cmd>confirm quit<CR>", desc = "quit" },
+    { "<leader>u", "g~l", desc = "swap case" },
+    { "<leader>w", "<cmd>write<CR>", desc = "write file", silent = true },
+    { "<leader>W", "<cmd>write<CR>", desc = "write file" },
 })
 
 local modes = { "n", "v", "t" }
 nx.map({
-    { "<C-j>", "<C-w>j", modes, desc = "Focus window to the bottom" },
-    { "<C-k>", "<C-w>k", modes, desc = "Focus window to the top" },
-    { "<C-l>", "<C-w>l", modes, desc = "Focus window to the right" },
-    { "<C-h>", "<C-w>h", modes, desc = "Focus window to the left" },
+    { "<C-j>", "<C-w>j", modes, desc = "focus window to the bottom" },
+    { "<C-k>", "<C-w>k", modes, desc = "focus window to the top" },
+    { "<C-l>", "<C-w>l", modes, desc = "focus window to the right" },
+    { "<C-h>", "<C-w>h", modes, desc = "focus window to the left" },
 })
 
-nx.map({
-    { ";", ":", { "n", "v" }, silent = false }, -- map ';' to start command mode
-    { "<C-l>", "<Right>", { "c" }, silent = false },
-})
+-- nx.map({
+--     { ";", ":", { "n", "v" }, silent = false }, -- map ';' to start command mode
+--     { "<C-l>", "<Right>", { "c" }, silent = false },
+-- })

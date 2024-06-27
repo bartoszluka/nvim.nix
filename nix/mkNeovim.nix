@@ -126,14 +126,16 @@ with lib;
         ''
         + strings.concatMapStringsSep
         "\n"
-        (plugin: ''
-          dev_plugin_path = dev_plugins_dir .. '/${plugin.name}'
-          if vim.fn.empty(vim.fn.glob(dev_plugin_path)) > 0 then
-            vim.notify('Bootstrapping dev plugin ${plugin.name} ...', vim.log.levels.INFO)
-            vim.cmd('!${pkgs.git}/bin/git clone ${plugin.url} ' .. dev_plugin_path)
-          end
-          vim.cmd('packadd! ${plugin.name}')
-        '')
+        (plugin:
+          # lua
+          ''
+            dev_plugin_path = dev_plugins_dir .. '/${plugin.name}'
+            if vim.fn.empty(vim.fn.glob(dev_plugin_path)) > 0 then
+              vim.notify('Bootstrapping dev plugin ${plugin.name} ...', vim.log.levels.INFO)
+              vim.cmd('!${pkgs.git}/bin/git clone ${plugin.url} ' .. dev_plugin_path)
+            end
+            vim.cmd('packadd! ${plugin.name}')
+          '')
         devPlugins
       )
       # Prepend nvim and after directories to the runtimepath

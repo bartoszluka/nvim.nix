@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "bufonly": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1625462970,
+        "narHash": "sha256-+k7Be6FYAtcK91X3VsG2h1jZ1XEd7Px8O2v+hwXtFUk=",
+        "owner": "numToStr",
+        "repo": "BufOnly.nvim",
+        "rev": "30579c2851743b00c4547c324a16f2c1cfa5a41c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numToStr",
+        "repo": "BufOnly.nvim",
+        "type": "github"
+      }
+    },
+    "csharp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708386303,
+        "narHash": "sha256-YjtFg83bREcSNASarMbebqFRihbdOZF4uE0OMSEtcYg=",
+        "owner": "iabdelkareem",
+        "repo": "csharp.nvim",
+        "rev": "48d72dfad26177295744d6da958f1dc08046a9d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iabdelkareem",
+        "repo": "csharp.nvim",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -71,6 +103,22 @@
         "type": "github"
       }
     },
+    "lz-n": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719403942,
+        "narHash": "sha256-p7ieyoD9Nv69vsXN/moH+vQK+TyD/k7Dwe9hOEet4ag=",
+        "owner": "nvim-neorocks",
+        "repo": "lz.n",
+        "rev": "4ef22dd57ba1fbe51b411655ddd7821e7b6ec197",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-neorocks",
+        "repo": "lz.n",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1716948383,
@@ -133,9 +181,12 @@
     },
     "root": {
       "inputs": {
+        "bufonly": "bufonly",
+        "csharp": "csharp",
         "flake-utils": "flake-utils",
         "fzy-lua-native": "fzy-lua-native",
         "gen-luarc": "gen-luarc",
+        "lz-n": "lz-n",
         "nixpkgs": "nixpkgs_2",
         "nx": "nx",
         "smart-open": "smart-open",

@@ -23,11 +23,12 @@ vim.opt.fillchars = {
     vert = "▏",
 }
 
+vim.opt.shortmess:append("c") -- don't give completion-menu messages
 nx.set({
     -- General
     clipboard = "unnamedplus", -- use system clipboard
     mouse = "a", -- allow mouse in all modes
-    lazyredraw = true,
+    lazyredraw = false, -- pause redrawin when executing macros and other commands
     showmode = false, -- print vim mode on enter
     termguicolors = true, -- set term gui colors
     timeoutlen = 350, -- time to wait for a mapped sequence to complete
@@ -39,7 +40,6 @@ nx.set({
     cmdheight = 1,
     -- Completion menu
     pumheight = 14, -- completion popup menu height
-    shortmess__append = "c", -- don't give completion-menu messages
     -- Gutter
     number = true, -- show line numbers
     numberwidth = 3, -- number column width - default "4"
@@ -53,7 +53,7 @@ nx.set({
     foldmethod = "expr",
     foldexpr = "v:lua.vim.treesitter.foldexpr()",
     foldtext = "v:lua.vim.treesitter.foldtext()",
-    -- foldenable = false, --disable folds on start
+    foldenable = false, --disable folds on start
     -- ...
     wrap = false, -- wrapping of text
     breakindent = true,
@@ -69,7 +69,7 @@ nx.set({
     splitright = true, -- Put new windows right of current
     completeopt = "menu,menuone,noinsert,preview", -- Set completeopt to have a better completion experience
     guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20",
-    -- inccommand = "split",                          -- show the effects of a search / replace in a live preview window
+    inccommand = "split",                          -- show the effects of a search / replace in a live preview window
     formatexpr = "v:lua.require'conform'.formatexpr()",
 }, vim.opt)
 
