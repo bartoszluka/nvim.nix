@@ -30,6 +30,7 @@ return {
         -- "omnisharp",
         "kotlin_language_server",
         "basedpyright",
-        -- "clangd",
+        "clangd",
+        "nil_ls",
     },
 }
