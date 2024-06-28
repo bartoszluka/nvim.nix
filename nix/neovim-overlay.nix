@@ -93,7 +93,6 @@ with final.pkgs.lib; let
     nvim-lspconfig
     nvim-bqf
     hop-nvim
-    neodev-nvim
 
     (mkNvimPlugin inputs.wf-nvim "wf-nvim") # https://github.com/Cassin01/wf.nvim
     (mkNvimPlugin inputs.smart-open "smart_open")
