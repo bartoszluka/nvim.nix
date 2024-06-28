@@ -67,7 +67,7 @@ nx.set({
     sidescrolloff = 20, -- Columns of context
     splitbelow = true, -- Put new windows below current
     splitright = true, -- Put new windows right of current
-    completeopt = "menu,menuone,noinsert,preview", -- Set completeopt to have a better completion experience
+    completeopt = "menu,menuone,noinsert", -- Set completeopt to have a better completion experience
     guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20",
     inccommand = "split", -- show the effects of a search / replace in a live preview window
     formatexpr = "v:lua.require'conform'.formatexpr()",

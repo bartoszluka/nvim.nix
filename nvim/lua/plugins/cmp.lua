@@ -5,8 +5,6 @@ return {
         after = function()
             require("nvim-autopairs").setup()
         end,
-        -- use opts = {} for passing setup options
-        -- this is equalent to setup({}) function
     },
     {
         "cmp",
@@ -21,21 +19,21 @@ return {
                 method = "getCompletionsCycling",
                 snippet = {
                     expand = function(args)
-                        luasnip.lsp_expand(args.body)
+                        vim.snippet.expand(args.body)
+                        -- luasnip.lsp_expand(args.body)
                     end,
                 },
+                completion = { completeopt = "menu,menuone,noinsert" },
                 preselect = cmp.PreselectMode.Item,
                 mapping = {
                     ["<C-n>"] = cmp.mapping(
                         cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                        { "i", "c" }
+                        { "i", "s", "c" }
                     ),
                     ["<C-p>"] = cmp.mapping(
                         cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-                        { "i", "c" }
+                        { "i", "s", "c" }
                     ),
-                    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-                    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
                     ["<C-e>"] = cmp.mapping(cmp.mapping.close(), { "i", "s", "c" }),
                     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                     ["<C-y>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
@@ -44,7 +42,7 @@ return {
                             luasnip.expand_or_jump()
                         end
                     end, { "i", "s" }),
-                    ["<C-h>"] = cmp.mapping(function()
+                    ["C-h"] = cmp.mapping(function()
                         if luasnip.locally_jumpable(-1) then
                             luasnip.jump(-1)
                         end
@@ -53,13 +51,10 @@ return {
                 sources = {
                     -- { name = "codeium" },
                     { name = "nvim_lsp" },
-                    { name = "nvim_lua" },
                     { name = "nvim_lsp_signature_help" },
-                    { name = "path" },
-                    { name = "emoji" },
                     { name = "luasnip" },
+                    { name = "path" },
                     { name = "buffer" },
-                    { name = "fish" },
                 },
                 formatting = {
                     format = function(_, item)
@@ -112,12 +107,12 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 -- view = { entries = "native" },
-                experimental = {
-                    ghost_text = {
-                        hl_group = "LspCodeLens",
-                        native_menu = false,
-                    },
-                },
+                -- experimental = {
+                --     ghost_text = {
+                --         hl_group = "LspCodeLens",
+                --         native_menu = false,
+                --     },
+                -- },
                 enabled = function()
                     return vim.bo[0].buftype ~= "prompt"
                 end,
@@ -130,13 +125,16 @@ return {
                 }),
             })
 
+            cmp.setup.filetype("fish", {
+                sources = cmp.config.sources({ { name = "fish" } }),
+            })
             -- Fix for autopairs with cmp
             -- cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
             -- `/` cmdline setup.
             cmp.setup.cmdline({ "/", "?" }, {
                 sources = {
-                    -- { name = "nvim_lsp_document_symbol", keyword_length = 3 },
+                    { name = "nvim_lsp_document_symbol", keyword_length = 3 },
                     { name = "buffer" },
                     -- { name = "cmdline_history" },
                 },
@@ -147,16 +145,22 @@ return {
 
             -- `:` cmdline setup.
             cmp.setup.cmdline(":", {
-                sources = {
+                sources = cmp.config.sources({
+                    { name = "path" },
+                }, {
                     {
                         name = "cmdline",
                         option = {
                             ignore_cmds = { "Man", "!" },
                         },
                     },
-                    -- { name = "cmdline_history" },
-                    -- { name = "path" },
-                },
+                    { { name = "cmdline_history" } },
+                }),
+                matching = { disallow_symbol_nonprefix_matching = false },
+                -- sources = cmp.config.sources(
+                --     { name = "path" }
+                -- { { name = "cmdline_history" } }
+                -- ),
             })
 
             cmp.setup.filetype("gitcommit", {
