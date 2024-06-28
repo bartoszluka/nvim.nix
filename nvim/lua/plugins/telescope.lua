@@ -1,6 +1,10 @@
 return {
     "telescope",
-    keys = { "<leader>sf", "leader<sg>" },
+    keys = {
+        "<leader>sf",
+        "<leader>sg",
+        "<leader>sh",
+    },
 
     after = function()
         local telescope = require("telescope")
@@ -25,6 +29,7 @@ return {
             telescope.extensions.smart_open.smart_open({ cwd_only = true })
         end, { desc = "search files" })
         vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "live grep" })
+        vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "help tags" })
         vim.keymap.set("n", "<leader>sq", builtin.command_history, { desc = "command history" })
         vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "lsp document symbols" })
         vim.keymap.set("n", "<leader>sS", builtin.lsp_dynamic_workspace_symbols, { desc = "lsp workspace symbols" })

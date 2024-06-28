@@ -8,16 +8,29 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    lz-n = {
-      url = "github:nvim-neorocks/lz.n";
-      flake = false;
-    };
+    lz-n.url = "github:nvim-neorocks/lz.n";
     csharp = {
       url = "github:iabdelkareem/csharp.nvim";
       flake = false;
     };
     bufonly = {
       url = "github:numToStr/BufOnly.nvim";
+      flake = false;
+    };
+    mini-ai = {
+      url = "github:echasnovski/mini.ai";
+      flake = false;
+    };
+    mini-move = {
+      url = "github:echasnovski/mini.move";
+      flake = false;
+    };
+    mini-bufremove = {
+      url = "github:echasnovski/mini.bufremove";
+      flake = false;
+    };
+    rip-substitute = {
+      url = "github:chrisgrieser/nvim-rip-substitute";
       flake = false;
     };
     wf-nvim = {
@@ -38,6 +51,10 @@
     };
     fzy-lua-native = {
       url = "github:romgrk/fzy-lua-native";
+      flake = false;
+    };
+    scrollEOF = {
+      url = "github:Aasim-A/scrollEOF.nvim";
       flake = false;
     };
   };

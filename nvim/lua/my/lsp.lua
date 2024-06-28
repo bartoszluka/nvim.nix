@@ -1,6 +1,5 @@
 return {
     on_attach = function(client, bufnr)
-        vim.notify("attaching " .. client.name)
         nx.map({
             { "gd", vim.lsp.buf.definition, desc = "go to definition" },
             { "<leader>a", vim.lsp.buf.code_action, { "n", "v" }, desc = "code action" },

@@ -17,7 +17,6 @@ vim.g.editorconfig = true
 vim.g.sqlite_clib_path = require("luv").os_getenv("LIBSQLITE")
 
 require("lz.n").load("plugins")
-vim.cmd.colorscheme("nord")
 require("my.autocommands")
 require("my.settings")
 require("my.keymaps")

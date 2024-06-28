@@ -1,0 +1,4 @@
+return {
+    "bqf",
+    ft = "qf",
+}

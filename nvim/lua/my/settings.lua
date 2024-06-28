@@ -28,7 +28,7 @@ nx.set({
     -- General
     clipboard = "unnamedplus", -- use system clipboard
     mouse = "a", -- allow mouse in all modes
-    lazyredraw = false, -- pause redrawin when executing macros and other commands
+    lazyredraw = true, -- pause redrawin when executing macros and other commands
     showmode = false, -- print vim mode on enter
     termguicolors = true, -- set term gui colors
     timeoutlen = 350, -- time to wait for a mapped sequence to complete
@@ -57,7 +57,7 @@ nx.set({
     -- ...
     wrap = false, -- wrapping of text
     breakindent = true,
-    updatetime = 250, -- decrease update time
+    updatetime = 1000, -- decrease update time
     hidden = true, -- Enable background buffers
     joinspaces = false, -- No double spaces with join
     scrolloff = 10, -- Lines of context
@@ -69,7 +69,7 @@ nx.set({
     splitright = true, -- Put new windows right of current
     completeopt = "menu,menuone,noinsert,preview", -- Set completeopt to have a better completion experience
     guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20",
-    inccommand = "split",                          -- show the effects of a search / replace in a live preview window
+    inccommand = "split", -- show the effects of a search / replace in a live preview window
     formatexpr = "v:lua.require'conform'.formatexpr()",
 }, vim.opt)
 

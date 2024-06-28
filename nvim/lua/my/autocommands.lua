@@ -26,10 +26,11 @@ nx.au({
 }, { create_group = "FixMarkdownCommentString" })
 
 nx.au({
-    { "BufRead", "BufNewFile" },
+    "BufWinEnter",
     desc = "disable extending comments with 'o'",
     pattern = "*",
     callback = function()
+        vim.opt.formatoptions:remove("o")
         vim.opt_local.formatoptions:remove("o")
     end,
 }, { create_group = "DisableExtendingComments" })
@@ -47,7 +48,7 @@ nx.au({
 }, { create_group = "GitCommitStartInsert" })
 
 nx.au({
-    { "BufRead", "BufNewFile" },
+    "BufRead",
     desc = "set correct filetype and commentstring for .rasi files",
     pattern = "*.rasi",
     callback = function()
@@ -67,7 +68,7 @@ nx.au({
 }, { create_group = "GoToDefinitionInHelpFiles" })
 
 -- nx.au({
---     { "BufRead", "BufNewFile" },
+--     "BufRead",
 --     desc = "set correct filetype F# files",
 --     pattern = { "*.fs", "*.fsx", "*.fsi" },
 --     command = "set filetype=fsharp",
@@ -94,8 +95,9 @@ nx.au({
 
 -- Check if we need to reload the file when it changed
 nx.au({
-    { "FocusGained", "TermClose", "TermLeave" },
-    command = "checktime",
+    { "FocusGained", command = "checktime" },
+    { "TermClose", command = "checktime" },
+    { "TermLeave", command = "checktime" },
 }, { create_group = "CheckIfEditedOutside" })
 
 -- resize splits if window got resized

@@ -91,14 +91,21 @@ with final.pkgs.lib; let
     no-neck-pain-nvim
     fidget-nvim
     nvim-lspconfig
+    nvim-bqf
+    hop-nvim
 
-    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
+    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # https://github.com/Cassin01/wf.nvim
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
     (mkNvimPlugin inputs.snap "snap")
     (mkNvimPlugin inputs.lz-n "lz.n")
     (mkNvimPlugin inputs.csharp "csharp.nvim")
     (mkNvimPlugin inputs.bufonly "BufOnly")
+    (mkNvimPlugin inputs.mini-ai "mini.ai")
+    (mkNvimPlugin inputs.mini-move "mini.move")
+    (mkNvimPlugin inputs.mini-bufremove "mini.bufremove")
+    (mkNvimPlugin inputs.scrollEOF "scrollEOF.nvim")
+    (mkNvimPlugin inputs.rip-substitute "rip-substitue")
   ];
 
   extraPackages = with pkgs; [
@@ -111,6 +118,7 @@ with final.pkgs.lib; let
     typescript
     nodePackages.typescript-language-server
     prettierd
+    biome
   ];
 in {
   # This is the neovim derivation

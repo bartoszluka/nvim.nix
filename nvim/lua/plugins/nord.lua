@@ -1,6 +1,8 @@
 return {
     "nord",
-    colorscheme = "nord",
+    -- this colorscheme does not behave well with the `colorscheme` setting
+    -- colorscheme = "nord",
+    event = "UIEnter",
     after = function()
         require("nord").setup({
             -- your configuration comes here
@@ -32,7 +34,38 @@ return {
                 highlights.DiffDelete.bg = colors.snow_storm.brightest
                 -- highlights.MultiCursor = "#434c5e"
                 -- highlights.MultiCursorMain.fg = colors.nord3
+
+                -- colors = {
+                --   aurora = {
+                --     green = "#A3BE8C",
+                --     orange = "#D08770",
+                --     purple = "#B48EAD",
+                --     red = "#BF616A",
+                --     yellow = "#EBCB8B"
+                --   },
+                --   frost = {
+                --     artic_ocean = "#5E81AC",
+                --     artic_water = "#81A1C1",
+                --     ice = "#88C0D0",
+                --     polar_water = "#8FBCBB"
+                --   },
+                --   none = "NONE",
+                --   polar_night = {
+                --     bright = "#3B4252",
+                --     brighter = "#434C5E",
+                --     brightest = "#4C566A",
+                --     light = "#616E88",
+                --     origin = "#2E3440"
+                --   },
+                --   snow_storm = {
+                --     brighter = "#E5E9F0",
+                --     brightest = "#ECEFF4",
+                --     origin = "#D8DEE9"
+                --   }
+                -- }
             end,
         })
+
+        require("nord").load()
     end,
 }
