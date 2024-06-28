@@ -56,7 +56,7 @@ with final.pkgs.lib; let
     # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
     # ^ telescope and extensions
     # UI
-    # lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
+    lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
     # nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     # statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
     # ^ UI
