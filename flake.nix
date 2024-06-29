@@ -8,7 +8,7 @@
 
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
-    lz-n.url = "github:nvim-neorocks/lz.n";
+    lz-n.url = "path:/home/bartek/repos/lz.n";
     csharp = {
       url = "github:iabdelkareem/csharp.nvim";
       flake = false;

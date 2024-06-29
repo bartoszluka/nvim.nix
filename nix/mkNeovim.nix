@@ -110,20 +110,26 @@ with lib;
     # and prepends the nvim and after directory to the RTP
     # It also adds logic for bootstrapping dev plugins (for plugin developers)
     initLua =
-      ''
-        vim.loader.enable()
-        -- prepend lua directory
-        vim.opt.rtp:prepend('${nvimRtp}/lua')
-      ''
+      (
+        # lua
+        ''
+          vim.loader.enable()
+          -- prepend lua directory
+          vim.opt.rtp:prepend('${nvimRtp}/lua')
+        ''
+      )
       # Wrap init.lua
       + (builtins.readFile ../nvim/init.lua)
       # Bootstrap/load dev plugins
       + optionalString (devPlugins != []) (
-        ''
-          local dev_pack_path = vim.fn.stdpath('data') .. '/site/pack/dev'
-          local dev_plugins_dir = dev_pack_path .. '/opt'
-          local dev_plugin_path
-        ''
+        (
+          # lua
+          ''
+            local dev_pack_path = vim.fn.stdpath('data') .. '/site/pack/dev'
+            local dev_plugins_dir = dev_pack_path .. '/opt'
+            local dev_plugin_path
+          ''
+        )
         + strings.concatMapStringsSep
         "\n"
         (plugin:
@@ -143,10 +149,12 @@ with lib;
       # because of a bug in Neovim that can cause filetype plugins
       # to be sourced prematurely, see https://github.com/neovim/neovim/issues/19008
       # We prepend to ensure that user ftplugins are sourced before builtin ftplugins.
-      + ''
-        vim.opt.rtp:prepend('${nvimRtp}/nvim')
-        vim.opt.rtp:prepend('${nvimRtp}/after')
-      '';
+      + ( # lua
+        ''
+          vim.opt.rtp:prepend('${nvimRtp}/nvim')
+          vim.opt.rtp:prepend('${nvimRtp}/after')
+        ''
+      );
 
     # Add arguments to the Neovim wrapper script
     extraMakeWrapperArgs = builtins.concatStringsSep " " (
