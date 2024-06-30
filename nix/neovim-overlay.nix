@@ -95,7 +95,6 @@ with final.pkgs.lib; let
     hop-nvim
     hmts-nvim
 
-    (mkNvimPlugin inputs.wf-nvim "wf-nvim") # https://github.com/Cassin01/wf.nvim
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
     (mkNvimPlugin inputs.snap "snap")
@@ -104,6 +103,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.bufonly "BufOnly")
     (mkNvimPlugin inputs.mini-ai "mini.ai")
     (mkNvimPlugin inputs.mini-move "mini.move")
+    (mkNvimPlugin inputs.mini-clue "mini.clue")
     (mkNvimPlugin inputs.mini-bufremove "mini.bufremove")
     (mkNvimPlugin inputs.scrollEOF "scrollEOF.nvim")
     (mkNvimPlugin inputs.rip-substitute "rip-substitue")

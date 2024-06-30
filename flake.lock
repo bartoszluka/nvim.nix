@@ -501,6 +501,22 @@
         "type": "github"
       }
     },
+    "mini-clue": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719149707,
+        "narHash": "sha256-2HUf4FNc/PDHuEnZKGRibHub8jxkm8cp7UZjm/7yDmI=",
+        "owner": "echasnovski",
+        "repo": "mini.clue",
+        "rev": "c3eaa29d7e875b3a80b4db4067a04726646ce2db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.clue",
+        "type": "github"
+      }
+    },
     "mini-move": {
       "flake": false,
       "locked": {
@@ -849,6 +865,7 @@
         "lz-n": "lz-n",
         "mini-ai": "mini-ai",
         "mini-bufremove": "mini-bufremove",
+        "mini-clue": "mini-clue",
         "mini-move": "mini-move",
         "nixpkgs": "nixpkgs_8",
         "nx": "nx",

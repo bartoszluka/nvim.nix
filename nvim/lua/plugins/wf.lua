@@ -1,5 +1,6 @@
 return {
     "wf",
+    enabled = false,
     keys = { "<leader>" },
     after = function()
         local which_key = require("wf.builtin.which_key")

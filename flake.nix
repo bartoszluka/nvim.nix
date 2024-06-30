@@ -25,6 +25,10 @@
       url = "github:echasnovski/mini.move";
       flake = false;
     };
+    mini-clue = {
+      url = "github:echasnovski/mini.clue";
+      flake = false;
+    };
     mini-bufremove = {
       url = "github:echasnovski/mini.bufremove";
       flake = false;
