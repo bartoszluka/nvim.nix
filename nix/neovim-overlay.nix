@@ -95,9 +95,10 @@ with final.pkgs.lib; let
     hop-nvim
     hmts-nvim
 
+    
+    (mkNvimPlugin inputs.which-key "which-key")
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
-    (mkNvimPlugin inputs.snap "snap")
     (mkNvimPlugin inputs.lz-n "lz.n")
     (mkNvimPlugin inputs.csharp "csharp.nvim")
     (mkNvimPlugin inputs.bufonly "BufOnly")

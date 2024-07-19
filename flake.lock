@@ -872,8 +872,7 @@
         "rip-substitute": "rip-substitute",
         "scrollEOF": "scrollEOF",
         "smart-open": "smart-open",
-        "snap": "snap",
-        "wf-nvim": "wf-nvim"
+        "which-key": "which-key"
       }
     },
     "scrollEOF": {
@@ -908,22 +907,6 @@
         "type": "github"
       }
     },
-    "snap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717578488,
-        "narHash": "sha256-TRA2gSCXQNJ/AzS42XFI6MM/T5w0NiqJHhu0Jt1QDL4=",
-        "owner": "camspiers",
-        "repo": "snap",
-        "rev": "486a2ab714eee79c392abfb45bdb94398409ed34",
-        "type": "github"
-      },
-      "original": {
-        "owner": "camspiers",
-        "repo": "snap",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -939,19 +922,19 @@
         "type": "github"
       }
     },
-    "wf-nvim": {
+    "which-key": {
       "flake": false,
       "locked": {
-        "lastModified": 1710049294,
-        "narHash": "sha256-4RwTZP3Oz0Rj/PB9NV+FsdOsLMZZQMW+y25A7MWt9qo=",
-        "owner": "Cassin01",
-        "repo": "wf.nvim",
-        "rev": "716f2151bef7b38426a99802e89566ac9211978a",
+        "lastModified": 1721386158,
+        "narHash": "sha256-cI3OzzT7Que15ayqkX0+jCiJsfQz2UI1s5L1rHhM+vU=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "6e61b0904e9c038b6c511c43591ae2d811b4975e",
         "type": "github"
       },
       "original": {
-        "owner": "Cassin01",
-        "repo": "wf.nvim",
+        "owner": "folke",
+        "repo": "which-key.nvim",
         "type": "github"
       }
     }

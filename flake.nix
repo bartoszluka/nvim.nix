@@ -9,6 +9,10 @@
     # Add bleeding-edge plugins here.
     # They can be updated with `nix flake update` (make sure to commit the generated flake.lock)
     lz-n.url = "github:nvim-neorocks/lz.n";
+    which-key = {
+      url = "github:folke/which-key.nvim";
+      flake = false;
+    };
     csharp = {
       url = "github:iabdelkareem/csharp.nvim";
       flake = false;
@@ -37,20 +41,12 @@
       url = "github:chrisgrieser/nvim-rip-substitute";
       flake = false;
     };
-    wf-nvim = {
-      url = "github:Cassin01/wf.nvim";
-      flake = false;
-    };
     smart-open = {
       url = "github:danielfalk/smart-open.nvim";
       flake = false;
     };
     nx = {
       url = "github:tenxsoydev/nx.nvim";
-      flake = false;
-    };
-    snap = {
-      url = "github:camspiers/snap";
       flake = false;
     };
     fzy-lua-native = {
