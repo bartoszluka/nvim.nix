@@ -173,18 +173,6 @@ nx.au({
 }, { create_group = "HighlightYank" })
 
 nx.au({
-    { "BufWinEnter", "BufReadPost" },
-    --  not sure these 2 are needed
-    -- "FileReadPost",
-    pattern = "*",
-    -- manually update folds and open all folds
-    callback = function()
-        vim.cmd("normal! zxzR")
-        vim.opt.foldlevel = 99
-    end,
-}, { create_group = "UpdateFolds" })
-
-nx.au({
     "FileType",
     pattern = "xml",
     callback = function()

@@ -53,6 +53,7 @@ nx.set({
     foldmethod = "expr",
     foldexpr = "v:lua.vim.treesitter.foldexpr()",
     foldtext = "v:lua.vim.treesitter.foldtext()",
+    foldlevelstart = 99,
     foldenable = false, --disable folds on start
     -- ...
     wrap = false, -- wrapping of text
