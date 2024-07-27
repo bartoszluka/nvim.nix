@@ -1,6 +1,6 @@
 return {
     "which-key",
-
+    event = "DeferredUIEnter",
     after = function()
         require("which-key").setup(
             {
