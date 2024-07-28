@@ -45,7 +45,7 @@ with final.pkgs.lib; let
     nvim-autopairs
     # ^ nvim-cmp extensions
     # git integration plugins
-    # diffview-nvim # https://github.com/sindrets/diffview.nvim/
+    diffview-nvim # https://github.com/sindrets/diffview.nvim/
     neogit # https://github.com/TimUntersberger/neogit/
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
@@ -95,7 +95,6 @@ with final.pkgs.lib; let
     hop-nvim
     hmts-nvim
 
-    
     (mkNvimPlugin inputs.which-key "which-key")
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")

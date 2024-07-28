@@ -1,5 +1,6 @@
 return {
     "neogit",
+    cmd = { "Neogit" },
     keys = {
         {
             "<leader>go",
@@ -31,10 +32,20 @@ return {
         require("neogit").setup({
             disable_builtin_notifications = true,
             disable_insert_on_commit = "auto",
+            disable_signs = true,
+            telescope_sorter = function()
+                return require("telescope").extensions.fzy_native.native_fzy_sorter()
+            end,
+            kind = "replace",
             integrations = {
-                diffview = false,
+                diffview = true,
                 telescope = true,
                 fzf_lua = false,
+            },
+            highlight = {
+                italic = false,
+                bold = true,
+                underline = true,
             },
             sections = {
                 ---@diagnostic disable-next-line: missing-fields
