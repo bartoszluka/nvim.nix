@@ -1,5 +1,6 @@
 return {
     "neogit",
+    enable = false,
     cmd = { "Neogit" },
     keys = {
         {
