@@ -94,6 +94,7 @@ with final.pkgs.lib; let
     nvim-bqf
     hop-nvim
     hmts-nvim
+    guess-indent-nvim
 
     (mkNvimPlugin inputs.which-key "which-key")
     (mkNvimPlugin inputs.smart-open "smart_open")
