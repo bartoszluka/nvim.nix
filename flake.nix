@@ -57,6 +57,10 @@
       url = "github:Aasim-A/scrollEOF.nvim";
       flake = false;
     };
+    nvim-cmp = {
+      url = "github:yioneko/nvim-cmp/perf";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

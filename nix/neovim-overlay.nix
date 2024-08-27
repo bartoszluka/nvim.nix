@@ -30,8 +30,6 @@ with final.pkgs.lib; let
     # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
     nvim-treesitter.withAllGrammars
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
-    # nvim-cmp (autocompletion) and extensions
-    nvim-cmp # https://github.com/hrsh7th/nvim-cmp
     cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
     lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
     cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
@@ -108,6 +106,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.mini-bufremove "mini.bufremove")
     (mkNvimPlugin inputs.scrollEOF "scrollEOF.nvim")
     (mkNvimPlugin inputs.rip-substitute "rip-substitue")
+    (mkNvimPlugin inputs.nvim-cmp "nvim-cmp")
   ];
 
   extraPackages = with pkgs; [
