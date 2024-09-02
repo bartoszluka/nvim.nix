@@ -58,9 +58,9 @@ return {
                     -- "*.fsproj",
                     ".git"
                 ),
-                handlers = {
-                    ["textDocument/definition"] = require("csharpls_extended").handler,
-                },
+                -- handlers = {
+                --     ["textDocument/definition"] = require("csharpls_extended").handler,
+                -- },
                 settings = {
                     csharp = {
                         loglevel = "log",

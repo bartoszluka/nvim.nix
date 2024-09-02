@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "csharp": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1723222099,
-        "narHash": "sha256-/JT0X0qS2Z3mp+Cm1Gq8S8OfmPYozJ9S52irZ/W6BX0=",
-        "owner": "iabdelkareem",
-        "repo": "csharp.nvim",
-        "rev": "8b933a9e53f1e94fac084971f4757580aa02a466",
-        "type": "github"
-      },
-      "original": {
-        "owner": "iabdelkareem",
-        "repo": "csharp.nvim",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -875,7 +859,6 @@
     "root": {
       "inputs": {
         "bufonly": "bufonly",
-        "csharp": "csharp",
         "flake-utils": "flake-utils",
         "fzy-lua-native": "fzy-lua-native",
         "gen-luarc": "gen-luarc",

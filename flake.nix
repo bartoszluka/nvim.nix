@@ -13,10 +13,6 @@
       url = "github:folke/which-key.nvim";
       flake = false;
     };
-    csharp = {
-      url = "github:iabdelkareem/csharp.nvim";
-      flake = false;
-    };
     bufonly = {
       url = "github:numToStr/BufOnly.nvim";
       flake = false;

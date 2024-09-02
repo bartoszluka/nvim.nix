@@ -1,10 +1,12 @@
 return {
     on_attach = function(client, bufnr)
+        pcall(vim.keymap.del, "n", "grc")
         nx.map({
             { "gd", vim.lsp.buf.definition, desc = "go to definition" },
             { "<leader>a", vim.lsp.buf.code_action, { "n", "v" }, desc = "code action" },
             { "gi", vim.lsp.buf.implementation, desc = "go to implementation" },
-            { "gr", vim.lsp.buf.references, desc = "go to references" },
+            { "grr", vim.lsp.buf.references, desc = "go to references" },
+            { "grn", vim.lsp.buf.rename, desc = "rename" },
             { "gh", vim.diagnostic.open_float, desc = "Open diagnostic" },
             { "<leader>ha", vim.lsp.codelens.run, desc = "code lens" },
         }, { buffer = bufnr })
@@ -25,7 +27,7 @@ return {
         "tsserver",
         "lua_ls",
         "cssls",
-        -- "csharp_ls",
+        "csharp_ls",
         -- "omnisharp",
         "kotlin_language_server",
         "basedpyright",

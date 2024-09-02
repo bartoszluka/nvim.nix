@@ -98,7 +98,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
     (mkNvimPlugin inputs.lz-n "lz.n")
-    (mkNvimPlugin inputs.csharp "csharp.nvim")
+
     (mkNvimPlugin inputs.bufonly "BufOnly")
     (mkNvimPlugin inputs.mini-ai "mini.ai")
     (mkNvimPlugin inputs.mini-move "mini.move")
@@ -120,6 +120,9 @@ with final.pkgs.lib; let
     nodePackages.typescript-language-server
     prettierd
     biome
+
+    csharp-ls
+    csharpier
   ];
 in {
   # This is the neovim derivation

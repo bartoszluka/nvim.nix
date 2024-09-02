@@ -182,3 +182,13 @@ nx.au({
         -- vim.opt_local.includeexpr:prepend(vim.fn.tr(vim.v.fname, [[\\\\]], "/"))
     end,
 }, { create_group = "GFWithBackslashes" })
+
+nx.au({
+    "LspAttach",
+    callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        require("my.lsp").on_attach(client, bufnr)
+        -- nx.hl({ "@parameter", link = "@variable.parameter" })
+    end,
+})
