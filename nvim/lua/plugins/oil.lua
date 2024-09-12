@@ -1,6 +1,12 @@
 return {
     "oil",
-    keys = { { "<leader>o", "<Cmd>Oil<CR>", desc = "oil" } },
+    keys = { {
+        "<leader>o",
+        function()
+            require("oil").open()
+        end,
+        desc = "oil",
+    } },
     after = function()
         require("oil").setup({
             -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
@@ -11,7 +17,7 @@ return {
             columns = {
                 "icon",
                 -- "permissions",
-                -- "size",
+                "size",
                 -- "mtime",
             },
             -- Buffer-local options to use for oil buffers
