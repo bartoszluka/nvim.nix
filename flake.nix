@@ -57,6 +57,14 @@
       url = "github:yioneko/nvim-cmp/perf";
       flake = false;
     };
+    scratch = {
+      url = "github:cenk1cenk2/scratch.nvim";
+      flake = false;
+    };
+    multiple-cursors = {
+      url = "github:brenton-leighton/multiple-cursors.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

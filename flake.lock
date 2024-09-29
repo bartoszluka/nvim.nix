@@ -698,6 +698,22 @@
         "type": "github"
       }
     },
+    "multiple-cursors": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717386334,
+        "narHash": "sha256-68CfCb1LGmkxAkQ5w0eax7sFSuXDM0rScnEeAxqH/7A=",
+        "owner": "brenton-leighton",
+        "repo": "multiple-cursors.nvim",
+        "rev": "2f5e786c43aa9c0fc34b295cfcc9bfbacef8e926",
+        "type": "github"
+      },
+      "original": {
+        "owner": "brenton-leighton",
+        "repo": "multiple-cursors.nvim",
+        "type": "github"
+      }
+    },
     "neorocks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -1114,13 +1130,31 @@
         "mini-bufremove": "mini-bufremove",
         "mini-clue": "mini-clue",
         "mini-move": "mini-move",
+        "multiple-cursors": "multiple-cursors",
         "nixpkgs": "nixpkgs_9",
         "nvim-cmp": "nvim-cmp",
         "nx": "nx",
         "rip-substitute": "rip-substitute",
+        "scratch": "scratch",
         "scrollEOF": "scrollEOF",
         "smart-open": "smart-open",
         "which-key": "which-key"
+      }
+    },
+    "scratch": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726508240,
+        "narHash": "sha256-xAwv7s1DSgN96uOvb4qpCB1l9a/euVIjRDCSC4sj4u8=",
+        "owner": "cenk1cenk2",
+        "repo": "scratch.nvim",
+        "rev": "3e3d2ad0d7f565bc794d9d3ad40e92509802ecad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cenk1cenk2",
+        "repo": "scratch.nvim",
+        "type": "github"
       }
     },
     "scrollEOF": {

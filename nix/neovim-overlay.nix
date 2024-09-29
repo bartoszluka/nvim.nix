@@ -94,6 +94,9 @@ with final.pkgs.lib; let
     hmts-nvim
     guess-indent-nvim
 
+    (mkNvimPlugin inputs.scratch "scratch")
+    (mkNvimPlugin inputs.multiple-cursors "multiple-cursors")
+
     (mkNvimPlugin inputs.which-key "which-key")
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")

@@ -58,16 +58,3 @@ nx.map({
     { "<leader>w", "<cmd>write<CR>", desc = "write file", silent = true },
     { "<leader>W", "<cmd>write<CR>", desc = "write file" },
 })
-
-local modes = { "n", "v", "t" }
-nx.map({
-    { "<C-j>", "<C-w>j", modes, desc = "focus window to the bottom" },
-    { "<C-k>", "<C-w>k", modes, desc = "focus window to the top" },
-    { "<C-l>", "<C-w>l", modes, desc = "focus window to the right" },
-    { "<C-h>", "<C-w>h", modes, desc = "focus window to the left" },
-})
-
--- nx.map({
---     { ";", ":", { "n", "v" }, silent = false }, -- map ';' to start command mode
---     { "<C-l>", "<Right>", { "c" }, silent = false },
--- })
