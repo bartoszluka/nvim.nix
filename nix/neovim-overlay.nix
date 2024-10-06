@@ -93,6 +93,7 @@ with final.pkgs.lib; let
     hop-nvim
     hmts-nvim
     guess-indent-nvim
+    qmk-nvim
 
     (mkNvimPlugin inputs.scratch "scratch")
     (mkNvimPlugin inputs.multiple-cursors "multiple-cursors")
