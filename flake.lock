@@ -1213,6 +1213,7 @@
         "scratch": "scratch",
         "scrollEOF": "scrollEOF",
         "smart-open": "smart-open",
+        "tree-pairs": "tree-pairs",
         "which-key": "which-key"
       }
     },
@@ -1276,6 +1277,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tree-pairs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715122816,
+        "narHash": "sha256-fb4EsrWAbm8+dWAhiirCPuR44MEg+KYb9hZOIuEuT24=",
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
+        "rev": "e7f7b6cc28dda6f3fa271ce63b0d371d5b7641da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yorickpeterse",
+        "repo": "nvim-tree-pairs",
         "type": "github"
       }
     },

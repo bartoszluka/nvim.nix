@@ -65,6 +65,10 @@
       url = "github:brenton-leighton/multiple-cursors.nvim";
       flake = false;
     };
+    tree-pairs = {
+      url = "github:yorickpeterse/nvim-tree-pairs";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

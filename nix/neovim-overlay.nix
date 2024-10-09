@@ -97,6 +97,7 @@ with final.pkgs.lib; let
 
     (mkNvimPlugin inputs.scratch "scratch")
     (mkNvimPlugin inputs.multiple-cursors "multiple-cursors")
+    (mkNvimPlugin inputs.tree-pairs "tree-pairs")
 
     (mkNvimPlugin inputs.which-key "which-key")
     (mkNvimPlugin inputs.smart-open "smart_open")
