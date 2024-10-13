@@ -37,6 +37,9 @@
       url = "github:chrisgrieser/nvim-rip-substitute";
       flake = false;
     };
+    sqlite-lua = {
+      url = "github:kkharji/sqlite.lua";
+    };
     smart-open = {
       url = "github:danielfalk/smart-open.nvim/0.2.x";
       flake = false;

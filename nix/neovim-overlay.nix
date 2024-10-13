@@ -71,7 +71,6 @@ with final.pkgs.lib; let
     # nvim-unception # Prevent nested neovim sessions | nvim-unception
     # ^ Useful utilities
     # libraries that other plugins depend on
-    sqlite-lua
     plenary-nvim
     nvim-web-devicons
     vim-repeat
@@ -100,6 +99,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.tree-pairs "tree-pairs")
 
     (mkNvimPlugin inputs.which-key "which-key")
+    (mkNvimPlugin inputs.sqlite-lua "sqlite")
     (mkNvimPlugin inputs.smart-open "smart_open")
     (mkNvimPlugin inputs.nx "nx")
     (mkNvimPlugin inputs.lz-n "lz.n")

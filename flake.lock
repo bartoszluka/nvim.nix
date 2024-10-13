@@ -298,6 +298,21 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "fzy-lua-native": {
       "flake": false,
       "locked": {
@@ -996,6 +1011,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_10": {
+      "locked": {
+        "lastModified": 1654230545,
+        "narHash": "sha256-8Vlwf0x8ow6pPOK2a04bT+pxIeRnM1+O0Xv9/CuDzRs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "236cc2971ac72acd90f0ae3a797f9f83098b17ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1718714799,
@@ -1213,6 +1244,7 @@
         "scratch": "scratch",
         "scrollEOF": "scrollEOF",
         "smart-open": "smart-open",
+        "sqlite-lua": "sqlite-lua",
         "tree-pairs": "tree-pairs",
         "which-key": "which-key"
       }
@@ -1263,6 +1295,25 @@
         "owner": "danielfalk",
         "ref": "0.2.x",
         "repo": "smart-open.nvim",
+        "type": "github"
+      }
+    },
+    "sqlite-lua": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_10"
+      },
+      "locked": {
+        "lastModified": 1713684746,
+        "narHash": "sha256-nbvc2hoOscOYoPPFUPnYdnXDwAPh5kiC2vI3lDP2QNo=",
+        "owner": "kkharji",
+        "repo": "sqlite.lua",
+        "rev": "d0ffd703b56d090d213b497ed4eb840495f14a11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kkharji",
+        "repo": "sqlite.lua",
         "type": "github"
       }
     },

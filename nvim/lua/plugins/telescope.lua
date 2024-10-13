@@ -82,6 +82,10 @@ return {
                     override_generic_sorter = false,
                     override_file_sorter = true,
                 },
+                smart_open = {
+                    match_algorithm = "fzy",
+                    filename_first = true,
+                },
             },
         })
 
