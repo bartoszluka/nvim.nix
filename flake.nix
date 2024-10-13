@@ -38,7 +38,7 @@
       flake = false;
     };
     smart-open = {
-      url = "github:danielfalk/smart-open.nvim";
+      url = "github:danielfalk/smart-open.nvim/0.2.x";
       flake = false;
     };
     nx = {

@@ -24,7 +24,7 @@ return {
     servers = {
         "elmls",
         "rust_analyzer",
-        "ts_ls",
+        -- "ts_ls",
         "lua_ls",
         "cssls",
         "csharp_ls",
