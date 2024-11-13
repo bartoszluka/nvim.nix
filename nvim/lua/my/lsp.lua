@@ -18,6 +18,7 @@ return {
         -- capabilities = vim.tbl_deep_extend("keep", capabilities, cmp_lsp_capabilities)
         -- Add any additional plugin capabilities here.
         -- Make sure to follow the instructions provided in the plugin's docs.
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
         return capabilities
     end,
 

@@ -112,6 +112,7 @@ with final.pkgs.lib; let
     (mkNvimPlugin inputs.scrollEOF "scrollEOF.nvim")
     (mkNvimPlugin inputs.rip-substitute "rip-substitue")
     (mkNvimPlugin inputs.nvim-cmp "nvim-cmp")
+    (mkNvimPlugin inputs.haskell-tools "haskell-tools")
   ];
 
   extraPackages = with pkgs; [

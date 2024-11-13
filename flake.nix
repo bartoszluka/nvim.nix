@@ -72,6 +72,10 @@
       url = "github:yorickpeterse/nvim-tree-pairs";
       flake = false;
     };
+    haskell-tools = {
+      url = "github:mrcjkb/haskell-tools.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
