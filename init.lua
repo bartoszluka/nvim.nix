@@ -9,8 +9,12 @@ end
 
 vim.g.editorconfig = true
 
-require("lz.n").load("plugins")
+require("my.colorscheme")
+require("my.oil")
 require("my.autocommands")
 require("my.settings")
 require("my.keymaps")
 require("my.commands")
+
+require("lze").load("plugins")
+-- require("lz.n").load("plugins")

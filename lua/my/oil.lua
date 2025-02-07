@@ -1,16 +1,11 @@
-require("nvim.lua.pluginss.oil").setup({
-    -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
-    -- Set to false if you still want to use netrw.
+require("oil").setup({
     default_file_explorer = true,
-    -- Id is automatically added at the beginning, and name at the end
-    -- See :help oil-columns
     columns = {
         "icon",
         -- "permissions",
-        -- "size",
+        "size",
         -- "mtime",
     },
-    -- Buffer-local options to use for oil buffers
     buf_options = {
         buflisted = false,
         bufhidden = "hide",
@@ -47,13 +42,13 @@ require("nvim.lua.pluginss.oil").setup({
     keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = "actions.select_vsplit",
-        ["<C-h>"] = "actions.select_split",
-        ["<C-t>"] = "actions.select_tab",
-        ["<C-p>"] = "actions.preview",
+        -- ["<C-s>"] = "actions.select_vsplit",
+        -- ["<C-h>"] = "actions.select_split",
+        -- ["<C-t>"] = "actions.select_tab",
+        -- ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
+        -- ["-"] = "actions.parent",
         ["<BS>"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
@@ -61,12 +56,11 @@ require("nvim.lua.pluginss.oil").setup({
         ["gs"] = "actions.change_sort",
         ["gx"] = "actions.open_external",
         ["g."] = "actions.toggle_hidden",
+        ["g\\"] = "actions.toggle_trash",
     },
-    -- Set to false to disable all of the above keymaps
-    use_default_keymaps = true,
     view_options = {
         -- Show files and directories that start with "."
-        show_hidden = false,
+        show_hidden = true,
         -- This function defines what is considered a "hidden" file
         is_hidden_file = function(name, bufnr)
             return vim.startswith(name, ".")
@@ -136,7 +130,4 @@ require("nvim.lua.pluginss.oil").setup({
         },
     },
 })
-
-nx.map({
-    { "<leader>o", "<Cmd>Oil<CR>", desc = "Close Current Window" },
-})
+vim.keymap.set("n", "<leader>o", cmd("Oil"), { noremap = true, desc = "oil" })

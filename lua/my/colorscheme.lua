@@ -10,27 +10,13 @@ require("nord").setup({
     styles = {
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`
-        comments = { italic = true },
+        comments = { italic = false },
         keywords = {},
         functions = {},
         variables = {},
-        -- To customize lualine/bufferline
-        bufferline = {
-            current = {},
-            modified = { italic = true },
-        },
     },
-    -- colorblind mode
-    -- see https://github.com/EdenEast/nightfox.nvim#colorblind
-    -- simulation mode has not been implemented yet.
     colorblind = {
         enable = false,
-        preserve_background = false,
-        severity = {
-            protan = 0.0,
-            deutan = 0.0,
-            tritan = 0.0,
-        },
     },
     --- You can override specific highlights to use other groups or a hex color
     --- function will be called with all highlights and the colorScheme table
@@ -42,6 +28,36 @@ require("nord").setup({
         highlights.DiffDelete.bg = colors.snow_storm.brightest
         -- highlights.MultiCursor = "#434c5e"
         -- highlights.MultiCursorMain.fg = colors.nord3
+
+        -- colors = {
+        --   aurora = {
+        --     green = "#A3BE8C",
+        --     orange = "#D08770",
+        --     purple = "#B48EAD",
+        --     red = "#BF616A",
+        --     yellow = "#EBCB8B"
+        --   },
+        --   frost = {
+        --     artic_ocean = "#5E81AC",
+        --     artic_water = "#81A1C1",
+        --     ice = "#88C0D0",
+        --     polar_water = "#8FBCBB"
+        --   },
+        --   none = "NONE",
+        --   polar_night = {
+        --     bright = "#3B4252",
+        --     brighter = "#434C5E",
+        --     brightest = "#4C566A",
+        --     light = "#616E88",
+        --     origin = "#2E3440"
+        --   },
+        --   snow_storm = {
+        --     brighter = "#E5E9F0",
+        --     brightest = "#ECEFF4",
+        --     origin = "#D8DEE9"
+        --   }
+        -- }
     end,
 })
+
 require("nord").load()
