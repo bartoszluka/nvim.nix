@@ -190,6 +190,7 @@
           haskell-tools-nvim
 
           nvim-bqf
+          lualine-nvim
 
           blink-cmp
           friendly-snippets
