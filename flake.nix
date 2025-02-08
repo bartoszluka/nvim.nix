@@ -191,6 +191,7 @@
 
           nvim-bqf
           lualine-nvim
+          neogit
 
           blink-cmp
           friendly-snippets
