@@ -8,7 +8,7 @@ return {
         -- for_cat = "neonixdev",
         cmd = { "LazyDev" },
         ft = "lua",
-        after = function(plugin)
+        after = function()
             require("lazydev").setup({
                 library = {
                     { words = { "nixCats" }, path = (require("nixCats").nixCatsPath or "") .. "/lua" },
@@ -43,7 +43,7 @@ return {
                 desc = "markdown preview toggle",
             },
         },
-        before = function(plugin)
+        before = function()
             vim.g.mkdp_auto_close = 0
         end,
     },
@@ -70,7 +70,7 @@ return {
         -- for_cat = "general.always",
         event = "DeferredUIEnter",
         -- keys = "",
-        after = function(plugin)
+        after = function()
             require("nvim-surround").setup({
                 keymaps = {
                     visual = "s",
@@ -129,7 +129,7 @@ return {
         -- for_cat = "general.extra",
         event = "LspAttach",
         -- keys = "",
-        after = function(plugin)
+        after = function()
             require("fidget").setup({})
         end,
     },
@@ -150,7 +150,7 @@ return {
     {
         "lualine.nvim",
         event = "DeferredUIEnter",
-        after = function(plugin)
+        after = function()
             local function lsp()
                 local buf_id = vim.api.nvim_get_current_buf()
                 local lsps = vim.lsp.get_clients({ bufnr = buf_id })
@@ -230,7 +230,7 @@ return {
     {
         "gitsigns.nvim",
         event = "DeferredUIEnter",
-        after = function(plugin)
+        after = function()
             require("gitsigns").setup({
                 -- See `:help gitsigns.txt`
                 current_line_blame = false,
@@ -353,7 +353,7 @@ return {
     {
         "which-key.nvim",
         event = "DeferredUIEnter",
-        after = function(plugin)
+        after = function()
             require("which-key").setup({
                 ---@type false | "classic" | "modern" | "helix"
                 preset = "helix",
