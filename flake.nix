@@ -189,6 +189,7 @@
 
           haskell-tools-nvim
 
+          nvim-bqf
 
           blink-cmp
           friendly-snippets
