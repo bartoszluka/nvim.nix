@@ -237,13 +237,32 @@ return {
                 current_line_blame_opts = {
                     ignore_whitespace = true,
                 },
+                -- signs = {
+                --     add = { text = "+" },
+                --     change = { text = "~" },
+                --     delete = { text = "_" },
+                --     topdelete = { text = "‾" },
+                --     changedelete = { text = "~" },
+                -- },
                 signs = {
-                    add = { text = "+" },
-                    change = { text = "~" },
+                    add = { text = "┃" },
+                    change = { text = "┃" },
                     delete = { text = "_" },
                     topdelete = { text = "‾" },
                     changedelete = { text = "~" },
+                    untracked = { text = "┆" },
                 },
+                signs_staged = {
+                    add = { text = "┃" },
+                    change = { text = "┃" },
+                    delete = { text = "_" },
+                    topdelete = { text = "‾" },
+                    changedelete = { text = "~" },
+                    untracked = { text = "┆" },
+                },
+                signs_staged_enable = true,
+
+                word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
                 on_attach = function(bufnr)
                     local gs = package.loaded.gitsigns
 
