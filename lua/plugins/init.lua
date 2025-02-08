@@ -164,7 +164,7 @@ return {
             require("lualine").setup({
                 options = {
                     icons_enabled = true,
-                    theme = "nord",
+                    theme = nixCats("theme") or vim.g.colors_name,
                     component_separators = "|",
                     section_separators = "",
                 },
@@ -261,8 +261,6 @@ return {
                     untracked = { text = "┆" },
                 },
                 signs_staged_enable = true,
-
-                word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
                 on_attach = function(bufnr)
                     local gs = package.loaded.gitsigns
 
@@ -654,7 +652,7 @@ return {
         after = function()
             require("conform").setup({
                 formatters_by_ft = {
-                    lua = { "stylua" },
+                    lua = { "stylua", "stylua", stop_after_first = false },
                     -- Conform will run multiple formatters sequentially
                     python = { "isort", "ruff_format" },
                     -- Use a sub-list to run only the first available formatter
@@ -817,7 +815,6 @@ return {
         },
         after = function()
             require("no-neck-pain").setup({
-
                 width = 120,
                 buffers = { colors = { blend = -0.2 } },
             })

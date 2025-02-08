@@ -268,6 +268,7 @@
           # gitPlugins = true;
           # customPlugins = true;
           # test = true;
+          theme = "nord";
           # example = {
           #   youCan = "add more than just booleans";
           #   toThisSet = [

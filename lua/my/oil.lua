@@ -3,7 +3,7 @@ require("oil").setup({
     columns = {
         "icon",
         -- "permissions",
-        "size",
+        -- "size",
         -- "mtime",
     },
     buf_options = {

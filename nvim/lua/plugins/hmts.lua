@@ -1,4 +1,0 @@
-return {
-    "hmts",
-    ft = "nix",
-}
