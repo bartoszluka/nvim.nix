@@ -7,7 +7,7 @@ return {
             { "gi", vim.lsp.buf.implementation, desc = "go to implementation" },
             { "grr", vim.lsp.buf.references, desc = "go to references" },
             { "grn", vim.lsp.buf.rename, desc = "rename" },
-            { "gh", vim.diagnostic.open_float, desc = "Open diagnostic" },
+            { "gh", vim.diagnostic.open_float, desc = "open diagnostic" },
             { "<leader>ha", vim.lsp.codelens.run, desc = "code lens" },
         }, { buffer = bufnr })
     end,
@@ -28,7 +28,7 @@ return {
         -- "ts_ls",
         "lua_ls",
         "cssls",
-        "csharp_ls",
+        -- "csharp_ls",
         -- "omnisharp",
         "kotlin_language_server",
         "basedpyright",
