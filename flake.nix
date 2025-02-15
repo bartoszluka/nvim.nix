@@ -170,9 +170,9 @@
 
           nvim-surround
 
-          mini-statusline
           mini-ai
           mini-bufremove
+          mini-pairs
 
           fidget-nvim
 

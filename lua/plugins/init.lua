@@ -809,6 +809,13 @@ return {
         },
     },
     {
+        "mini.pairs",
+        event = { "InsertEnter" },
+        after = function()
+            require("mini.pairs").setup()
+        end,
+    },
+    {
         "no-neck-pain.nvim",
         keys = {
             { "<leader>c", "<cmd>NoNeckPain<CR>", desc = "center view" },
