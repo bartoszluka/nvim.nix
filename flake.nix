@@ -141,6 +141,7 @@
           oil-nvim
           mini-icons
           gbprod-nord
+          mini-sessions
         ];
       };
 
