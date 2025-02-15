@@ -27,17 +27,17 @@ return {
         cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
         ft = "markdown",
         keys = {
-            { "<leader>mp", "<cmd>MarkdownPreview <CR>", mode = { "n" }, noremap = true, desc = "markdown preview" },
+            { "<leader>mp", cmd("MarkdownPreview"), mode = { "n" }, noremap = true, desc = "markdown preview" },
             {
                 "<leader>ms",
-                "<cmd>MarkdownPreviewStop <CR>",
+                cmd("MarkdownPreviewStop"),
                 mode = { "n" },
                 noremap = true,
                 desc = "markdown preview stop",
             },
             {
                 "<leader>mt",
-                "<cmd>MarkdownPreviewToggle <CR>",
+                cmd("MarkdownPreviewToggle"),
                 mode = { "n" },
                 noremap = true,
                 desc = "markdown preview toggle",
