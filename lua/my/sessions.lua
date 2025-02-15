@@ -5,7 +5,7 @@ local function get_git_branch_name()
 end
 
 local function get_session_name()
-    local dir = vim.re.gsub(vim.fs.normalize(vim.fn.getcwd()), '":"?"/"', "_")
+    local dir = vim.fs.normalize(vim.fn.getcwd()):gsub(":?/", "_")
     local ok, branch = pcall(get_git_branch_name)
     if ok then
         return dir .. "__" .. branch
@@ -39,7 +39,7 @@ require("mini.sessions").setup({
     },
 
     -- Whether to print session path after action
-    verbose = { read = false, write = true, delete = true },
+    verbose = { read = false, write = false, delete = true },
 })
 
 nx.au({

@@ -17,5 +17,5 @@ require("my.commands")
 require("my.oil")
 require("my.sessions")
 
-require("lze").load("plugins")
--- require("lz.n").load("plugins")
+require("lz.n").load("plugins")
+require("lzn-auto-require").enable()

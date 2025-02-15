@@ -136,7 +136,8 @@
         general = with pkgs.vimPlugins;
         with pkgs.neovimPlugins; [
           nx
-          lze
+          lz-n
+          lzn-auto-require
           plenary-nvim
           oil-nvim
           mini-icons
