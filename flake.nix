@@ -179,6 +179,7 @@
           which-key-nvim
 
           vim-startuptime
+          nvim-ts-autotag
           ts-comments-nvim
 
           scrollEof
