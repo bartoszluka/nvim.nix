@@ -28,71 +28,94 @@ local function find_project_file(extension)
     return chosen_file
 end
 
+local function process_output(out)
+    if out.code == 0 then
+        vim.schedule(function()
+            vim.notify("no build errors", vim.log.levels.INFO)
+        end)
+        return
+    end
+    local lines = vim.split(out.stdout, "\n", { plain = true, trimempty = true })
+
+    local qf_items = vim.iter(lines)
+        :map(function(line)
+            local path, line_num, col_num, msg = line:match("^(.+)%((%d+),(%d+)%)%: error (.+)$")
+
+            if path and line_num and col_num and msg then
+                ---@diagnostic disable-next-line: unused-local
+                local error_code, actual_msg, project = msg:match("^(.+%:%s)(.+)%s(%[.+%])")
+                return {
+                    filename = path,
+                    lnum = tonumber(line_num),
+                    col = tonumber(col_num),
+                    text = actual_msg,
+                }
+            else
+                return nil
+            end
+        end)
+        :filter(function(thing)
+            return thing ~= nil
+        end)
+        :totable()
+    if #qf_items > 0 then
+        local replace_items = "r"
+        vim.schedule(function()
+            vim.fn.setqflist(qf_items, replace_items)
+            vim.cmd.copen()
+        end)
+    end
+end
+
 local function build_and_set_qf(project_file)
     if vim.fn.executable("dotnet") == 0 then
         vim.notify("couldn't find executable `dotnet` in PATH", vim.log.levels.ERROR)
         return
     end
-    local cmd = { "dotnet", "build", project_file, "--property:consoleLoggerParameter=ErrorsOnly" }
+    local cmd = {
+        "dotnet",
+        "build",
+        project_file,
+        "--",
+        "/consoleLoggerParameters:ErrorsOnly;NoSummary;DisableConsoleColor",
+    }
     vim.notify("building " .. project_file, vim.log.levels.INFO)
-    vim.system(cmd, { text = true }, function(out)
-        if out.code == 0 then
-            vim.notify("no build errors", vim.log.levels.INFO)
-            return
-        end
-        local lines = vim.split(out.stdout, "\n", { plain = true, trimempty = true })
-
-        local qf_items = vim.iter(lines)
-            :map(function(line)
-                local path, line_num, col_num, msg = line:match("^(.+)%((%d+),(%d+)%)%: error (.+)$")
-
-                if path and line_num and col_num and msg then
-                    ---@diagnostic disable-next-line: unused-local
-                    local error_code, actual_msg, project = msg:match("^(.+%:%s)(.+)%s(%[.+%])")
-                    return {
-                        filename = path,
-                        lnum = tonumber(line_num),
-                        col = tonumber(col_num),
-                        text = actual_msg,
-                    }
-                else
-                    return nil
-                end
-            end)
-            :filter(function(thing)
-                return thing ~= nil
-            end)
-            :totable()
-        if #qf_items > 1 then
-            local replace_items = "r"
-            vim.schedule(function()
-                vim.fn.setqflist(qf_items, replace_items)
-                vim.cmd.copen()
-            end)
-        end
-    end)
+    vim.system(cmd, { text = true }, process_output)
 end
 
-nx.cmd({
-    "DotnetBuildSln",
-    function()
-        local project_file = find_project_file("sln")
-        if project_file == nil then
-            return
-        end
+local function build_sln()
+    local project_file = find_project_file("sln")
+    if project_file == nil then
+        return
+    end
 
-        build_and_set_qf(project_file)
-    end,
-})
+    build_and_set_qf(project_file)
+end
 
-nx.cmd({
-    "DotnetBuildCsproj",
-    function()
-        local project_file = find_project_file("csproj")
-        if project_file == nil then
-            return
-        end
+local function build_csproj()
+    local project_file = find_project_file("csproj")
+    if project_file == nil then
+        return
+    end
 
-        build_and_set_qf(project_file)
-    end,
-})
+    build_and_set_qf(project_file)
+end
+
+local has_nx, _ = pcall(require, "nx")
+if not has_nx then
+    nx.cmd({
+        { "DotnetBuildSln", build_sln },
+        { "DotnetBuildCsproj", build_csproj },
+    })
+
+    nx.map({
+        { "<leader>ds", build_sln, desc = "dotnet build sln" },
+        { "<leader>dp", build_csproj, desc = "dotnet build csproj" },
+    })
+else
+    vim.api.nvim_create_user_command("DotnetBuildSln", build_sln, {})
+    vim.api.nvim_create_user_command("DotnetBuildCsproj", build_csproj, {})
+
+    vim.keymap.set("n", "<leader>ds", build_sln, { desc = "dotnet build sln" })
+    vim.keymap.set("n", "<leader>dp", build_csproj, { desc = "dotnet build csproj" })
+end
