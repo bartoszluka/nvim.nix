@@ -1,5 +1,5 @@
 return {
-    "blink.cmp",
+    "blink-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
 
     after = function()
