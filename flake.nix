@@ -155,6 +155,8 @@
           nvim-treesitter-textobjects
           nvim-treesitter-context
           nvim-treesitter.withAllGrammars
+          nvim-ts-autotag
+          ts-comments-nvim
 
           lazydev-nvim
 
@@ -181,8 +183,6 @@
           which-key-nvim
 
           vim-startuptime
-          nvim-ts-autotag
-          ts-comments-nvim
 
           scrollEof
           bufonly
@@ -316,6 +316,7 @@
           packages = [defaultPackage];
           inputsFrom = [];
           shellHook = ''
+              echo run ${defaultPackageName}
           '';
         };
       };
