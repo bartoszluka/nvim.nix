@@ -3,9 +3,7 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
 
     after = function()
-        local setup = require("blink.cmp")().setup
-        -- require("blink.cmp").setup({
-        setup({
+        require("blink-cmp").setup({
             appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
                 -- Useful for when your theme doesn't support blink.cmp
