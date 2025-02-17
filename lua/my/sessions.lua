@@ -16,16 +16,16 @@ end
 
 require("mini.sessions").setup({
     -- Whether to read default session if Neovim opened without file arguments
-    autoread = true,
+    autoread = false,
 
     -- Whether to write currently read session before quitting Neovim
-    autowrite = true,
+    autowrite = false,
 
     -- Directory where global sessions are stored (use `''` to disable)
     -- directory = vim.fs.joinpath(vim.fn.stdpath("data") --[[@as string]], "session"), --<"session" subdir of user data directory from |stdpath()|>,
 
     -- File for local session (use `''` to disable)
-    file = get_session_name(),
+    file = "",
 
     -- Whether to force possibly harmful actions (meaning depends on function)
     force = { read = false, write = true, delete = false },
@@ -40,4 +40,28 @@ require("mini.sessions").setup({
 
     -- Whether to print session path after action
     verbose = { read = false, write = false, delete = true },
+})
+
+nx.au({
+    {
+        "VimEnter",
+        callback = function()
+            local session_name = get_session_name()
+            local all_sessions = vim.tbl_keys(MiniSessions.detected)
+            if vim.tbl_contains(all_sessions, session_name) then
+                MiniSessions.read(session_name)
+            end
+        end,
+    },
+    {
+        "VimLeave",
+        callback = function()
+            local session_name = get_session_name()
+            MiniSessions.write(session_name)
+        end,
+    },
+}, {
+    nested = true,
+    once = true,
+    create_group = "MySessions",
 })
