@@ -1,7 +1,6 @@
 return {
     "blink-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
-
     after = function()
         require("blink-cmp").setup({
             appearance = {

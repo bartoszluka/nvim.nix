@@ -33,6 +33,10 @@
     # overlay defined for custom builds in the overlays directory.
     # for specific tags, branches and commits, see:
     # https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html#examples
+    blink = {
+      url = "github:saghen/blink.cmp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     "plugins-nx" = {
       url = "github:tenxsoydev/nx.nvim";
       flake = false;
@@ -55,6 +59,8 @@
     ...
   } @ inputs: let
     inherit (nixCats) utils;
+    system = "x86_64-linux";
+    fromFlake = input: input.packages."${system}".default;
     # inherit (nixpkgs) pkgs;
     luaPath = "${./.}";
     forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
@@ -127,6 +133,8 @@
           stylua
           alejandra
           luajitPackages.luacheck
+
+          inputs.blink.packages."${system}".blink-fuzzy-lib
         ];
       };
 
@@ -196,8 +204,8 @@
           lualine-nvim
           neogit
 
-          blink-cmp
           friendly-snippets
+          (fromFlake inputs.blink)
         ];
       };
 
@@ -316,7 +324,7 @@
           packages = [defaultPackage];
           inputsFrom = [];
           shellHook = ''
-              echo run ${defaultPackageName}
+            echo run ${defaultPackageName}
           '';
         };
       };
