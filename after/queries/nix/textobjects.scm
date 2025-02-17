@@ -1,0 +1,2 @@
+; extends
+(binding) @parameter.outer
