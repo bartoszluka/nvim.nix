@@ -46,6 +46,9 @@ nx.au({
     {
         "VimEnter",
         callback = function()
+            if vim.fn.argc() > 0 then
+                return
+            end
             local session_name = get_session_name()
             local all_sessions = vim.tbl_keys(MiniSessions.detected)
             if vim.tbl_contains(all_sessions, session_name) then
